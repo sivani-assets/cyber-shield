@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHIELD v3.0 — Women's Cyber Safety</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ── TOP BADGE ─────────────────────────────────── -->
+<div class="top-badge">
+  <div class="badge-pill">
+    <span class="badge-dot"></span>
+    🛡 SHIELD v3.0 — Women's Cyber Safety
+  </div>
+</div>
+
+<!-- ── HERO ──────────────────────────────────────── -->
+<header class="hero">
+  <h1>Phishing <span>Detection</span> &<br><span>India Scam</span> Intelligence</h1>
+  <p class="hero-sub">
+    <span>Screenshot AI</span> <span class="dot">▪</span>
+    <span>Link Scanner</span> <span class="dot">▪</span>
+    <span>Live Heatmap</span> <span class="dot">▪</span>
+    <span>Scam Simulator</span>
+  </p>
+</header>
+
+<!-- ── LANGUAGE PILLS ────────────────────────────── -->
+<div class="lang-row">
+  <button class="lang-pill active" data-lang="en">🇬🇧 English</button>
+  <button class="lang-pill" data-lang="hi">🇮🇳 हिंदी</button>
+  <button class="lang-pill" data-lang="ta">🇮🇳 தமிழ்</button>
+  <button class="lang-pill" data-lang="te">🇮🇳 తెలుగు</button>
+  <button class="lang-pill" data-lang="bn">🇮🇳 বাংলা</button>
+  <button class="lang-pill" data-lang="mr">🇮🇳 मराठी</button>
+</div>
+
+<!-- ── TABS ───────────────────────────────────────── -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab active" data-tab="screenshot">🖥️ Screenshot AI</button>
+    <button class="tab" data-tab="link">🔗 Link Scanner</button>
+    <button class="tab" data-tab="heatmap">🗺️ Scam Heatmap</button>
+    <button class="tab" data-tab="simulator">🎭 Scam Simulator</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PANEL 1 — SCREENSHOT AI
+═══════════════════════════════════════════════════ -->
+<div class="panel active" id="panel-screenshot">
+  <div class="upload-zone" id="uploadZone">
+    <input type="file" id="fileInput" accept="image/*"/>
+    <span class="upload-icon">📸</span>
+    <h3 id="uploadTitle">Drop screenshot or click to upload</h3>
+    <p>WhatsApp ▪ SMS ▪ Email ▪ DMs ▪ Social Media</p>
+  </div>
+
+  <div id="previewWrap" style="display:none">
+    <img id="previewImg" src="" alt="Preview"/>
+    <button class="btn-clear" id="clearImg">✕ Remove</button>
+  </div>
+
+  <div id="resultBanner" style="display:none"></div>
+
+  <div class="bottom-grid">
+    <div class="card">
+      <div class="card-label">AI Analysis</div>
+      <p class="card-desc" id="aiDesc">Upload a screenshot and click Scan. Our AI reads text, logos, links and urgency cues to detect phishing patterns.</p>
+      <div id="aiFlagList"></div>
+      <button class="scan-btn" id="scanImgBtn">🖥️ Scan with AI</button>
+    </div>
+    <div class="card">
+      <div class="card-label">What to Look For</div>
+      <ul class="threat-list">
+        <li>Asking for OTP / Aadhaar / PIN</li>
+        <li>Urgency: "Act now!" "Last chance!"</li>
+        <li>Unknown sender or number</li>
+        <li>Prizes, lotteries, job offers</li>
+        <li>Fake govt / bank logos</li>
+        <li>Links asking you to "verify" or "update"</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PANEL 2 — LINK SCANNER
+═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-link">
+  <div class="link-box">
+    <div class="card-label">Paste a suspicious link</div>
+    <div class="input-row">
+      <input type="url" id="urlInput" placeholder="https://free-prize.sbi-kyc-update.xyz/..."/>
+      <button class="scan-btn inline" id="scanUrlBtn">🔍 Scan</button>
+    </div>
+  </div>
+  <div id="urlResultBanner" style="display:none"></div>
+  <div id="urlFlagList" class="flag-grid"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PANEL 3 — SCAM HEATMAP
+═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-heatmap">
+  <div class="heatmap-header">
+    <div>
+      <div class="card-label">India Scam Intelligence Map</div>
+      <p class="muted-sm">Click any city for details · Live from our database</p>
+    </div>
+    <div class="filter-pills" id="filterPills">
+      <button class="filter-pill active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="Financial Fraud">💰 Financial</button>
+      <button class="filter-pill" data-filter="Romance Scam">💔 Romance</button>
+      <button class="filter-pill" data-filter="Job Fraud">💼 Job</button>
+      <button class="filter-pill" data-filter="KYC Scam">🏦 KYC</button>
+      <button class="filter-pill" data-filter="OTP Fraud">📱 OTP</button>
+    </div>
+  </div>
+
+  <!-- SVG Map of India (simplified outline) -->
+  <div class="map-wrap">
+    <svg id="indiaMap" viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
+      <!-- Simplified India outline path -->
+      <path class="india-outline" d="
+        M160,20 L200,15 L240,22 L270,35 L290,55 L295,80 L305,95
+        L310,120 L300,140 L305,160 L315,175 L320,195 L310,215
+        L295,230 L285,250 L275,265 L265,285 L255,300 L245,315
+        L240,330 L235,345 L230,360 L225,375 L220,390 L215,405
+        L210,415 L205,420 L200,425 L195,420 L190,410 L185,395
+        L178,378 L172,360 L168,342 L162,325 L155,305 L148,285
+        L140,268 L132,252 L122,238 L115,220 L108,205 L100,188
+        L95,170 L90,152 L88,132 L85,112 L82,90 L85,70 L95,52
+        L115,38 L135,25 Z
+      "/>
+      <!-- City dots rendered by JS -->
+      <g id="cityDots"></g>
+    </svg>
+
+    <!-- City detail card -->
+    <div class="city-card" id="cityCard" style="display:none">
+      <button class="city-close" id="cityClose">✕</button>
+      <div class="city-name" id="cityName"></div>
+      <div class="city-state" id="cityState"></div>
+      <div class="city-scams" id="cityScams"></div>
+      <div class="city-type" id="cityType"></div>
+      <div class="city-bar-wrap"><div class="city-bar" id="cityBar"></div></div>
+    </div>
+  </div>
+
+  <!-- Top cities table -->
+  <div class="card" style="margin-top:16px">
+    <div class="card-label">Top 5 High-Risk Cities</div>
+    <table class="city-table" id="cityTable"></table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PANEL 4 — SCAM SIMULATOR
+═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-simulator">
+  <div id="simMenu">
+    <div class="card-label" style="margin-bottom:12px">Choose a Scam Scenario</div>
+    <div class="scenario-grid" id="scenarioGrid"></div>
+  </div>
+
+  <div id="simPlay" style="display:none">
+    <div class="sim-header">
+      <button class="btn-back" id="simBack">← Back</button>
+      <div class="card-label" id="simTitle"></div>
+      <div class="sim-score">Score: <span id="simScore">0</span></div>
+    </div>
+    <div class="chat-window" id="chatWindow"></div>
+    <div class="sim-choices" id="simChoices"></div>
+    <div class="sim-feedback" id="simFeedback" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ── SOS BUTTON ──────────────────────────────────── -->
+<button class="sos-btn" id="sosBtn">🆘 SOS Report</button>
+
+<!-- ── SOS MODAL ───────────────────────────────────── -->
+<div class="modal-overlay" id="sosModal" style="display:none">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="card-label">Emergency Cyber Crime Report</div>
+    <p class="modal-sub">Your report is encrypted and sent to our safety team.</p>
+
+    <div id="sosStep1">
+      <label>Your Name (optional)</label>
+      <input type="text" id="sosName" placeholder="Anonymous is OK"/>
+      <label>Phone / WhatsApp</label>
+      <input type="tel" id="sosPhone" placeholder="+91 98765 43210"/>
+      <label>What happened?</label>
+      <textarea id="sosDesc" rows="4" placeholder="Describe the scam in detail..."></textarea>
+      <label>Your City / Location</label>
+      <input type="text" id="sosLocation" placeholder="e.g. Chennai, Tamil Nadu"/>
+      <button class="scan-btn" id="sosSubmit">Submit Report</button>
+    </div>
+
+    <div id="sosStep2" style="display:none">
+      <div class="success-icon">✅</div>
+      <h3>Report Filed!</h3>
+      <p>Report ID: <strong id="reportId"></strong></p>
+      <p class="muted-sm">Share this ID if following up with authorities.</p>
+      <div class="helplines">
+        <div class="helpline-item">📞 Cyber Crime Helpline: <strong>1930</strong></div>
+        <div class="helpline-item">🌐 cybercrime.gov.in</div>
+        <div class="helpline-item">👩 Women Helpline: <strong>181</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
